@@ -39,6 +39,22 @@ jar {
 	}
 }
 
+run {
+	//This will activate the "debug" task whenever the "run"
+	//task is executed
+	
+	dependsOn 'debug'
+	
+}
+
+task debug ( type: JavaExec ){
+	classpath = sourceSets.main.runtimeClasspath
+	main = 'tutorial4.Main '
+	jvmArgs = [ '-Xdebug ', '- Xrunjdwp : transport = dt_socket
+	, server =y, suspend =y, address =2311 ']
+	
+}
+
 
 // Define the main class for the application
 mainClassName = 'tutorial4.Main'
